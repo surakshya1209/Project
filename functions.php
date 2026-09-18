@@ -117,3 +117,12 @@ function getAlsoBoughtProducts($conn, $productId, $limit = 4) {
     }
     return $rows;
 }
+function getCartCount($conn) {
+    if (!isLoggedIn()) return 0;
+    $stmt = $conn->prepare("SELECT COALESCE(SUM(quantity),0) AS c FROM cart WHERE user_id = ?");
+    $stmt->bind_param('i', $_SESSION['user_id']);
+    $stmt->execute();
+    $c = $stmt->get_result()->fetch_assoc()['c'];
+    $stmt->close();
+    return (int)$c;
+}

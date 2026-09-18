@@ -54,4 +54,37 @@ function renderStars($avg) {
     $html .= '</span>';
     return $html;
 }
+function getRecommendedProducts($conn, $limit = 4, $excludeId = null, $categoryId = null) {
+    $sql = "SELECT p.*,
+                   COALESCE(AVG(r.rating),0) AS avg_rating,
+                   COUNT(r.id) AS review_count
+            FROM products p
+            LEFT JOIN reviews r ON r.product_id = p.id
+            WHERE 1=1 ";
+    $types = '';
+    $params = [];
 
+    if ($excludeId) {
+        $sql .= " AND p.id != ? ";
+        $types .= 'i';
+        $params[] = $excludeId;
+    }
+    if ($categoryId) {
+        $sql .= " AND p.category_id = ? ";
+        $types .= 'i';
+        $params[] = $categoryId;
+    }
+
+    $sql .= " GROUP BY p.id
+              ORDER BY avg_rating DESC, review_count DESC, p.created_at DESC
+              LIMIT ?";
+    $types .= 'i';
+    $params[] = $limit;
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param($types, ...$params);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+    return $result;
+}

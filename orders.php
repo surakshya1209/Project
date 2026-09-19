@@ -50,6 +50,12 @@ require 'includes/header.php';
     <?= nl2br(h($o['delivery_address'])) ?>
   </p>
 <?php endif; ?>
+<?php if ($o['status'] === 'pending'): ?>
+  <form method="post" action="cancel_order.php" onsubmit="return confirm('Cancel this order?');" style="margin-top:10px;">
+    <input type="hidden" name="order_id" value="<?= $o['id'] ?>">
+    <button type="submit" class="btn btn-small" style="background:#c0392b; width:auto; padding:8px 16px;">Cancel Order</button>
+  </form>
+<?php endif; ?>
 
         <div class="order-total">Total: <?= money($o['total_amount']) ?></div>
       </div>

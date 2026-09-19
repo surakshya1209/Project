@@ -9,7 +9,7 @@
   --border: #e3e0d8;
   --danger: #c0392b;
   --success: #2d6a4f;
-  --radius: 10px;
+  --radius: 8px;
 }
 
 * { box-sizing: border-box; }
@@ -17,9 +17,9 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg);
+  background: #f7f6f2;
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -36,10 +36,10 @@ img { max-width: 100%; display: block; }
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 14px 20px;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 .logo { font-size: 1.4rem; font-weight: 700; color: #fff; }
@@ -51,18 +51,18 @@ img { max-width: 100%; display: block; }
 }
 .search-form input {
   flex: 1;
-  padding: 8px 12px;
+  padding: 9px 12px;
   border: none;
-  border-radius: 6px 0 0 6px;
-  font-size: 0.95rem;
+  border-radius: 5px 0 0 5px;
+  font-size: 0.93rem;
 }
 .search-form button {
-  padding: 8px 16px;
+  padding: 9px 15px;
   border: none;
   background: var(--accent);
   color: #24301f;
   font-weight: 600;
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
 }
 
@@ -86,8 +86,8 @@ img { max-width: 100%; display: block; }
 /* -------------------- Flash messages -------------------- */
 .flash {
   max-width: 1200px;
-  margin: 12px auto;
-  padding: 12px 18px;
+  margin: 14px auto;
+  padding: 11px 16px;
   border-radius: var(--radius);
   font-weight: 500;
 }
@@ -98,29 +98,29 @@ img { max-width: 100%; display: block; }
 .site-main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 20px 60px;
+  padding: 28px 20px 60px;
   min-height: 60vh;
 }
 
 .hero {
-  background: linear-gradient(120deg, var(--primary), var(--primary-dark));
+  background: var(--primary-dark);
   color: #fff;
-  padding: 40px 30px;
+  padding: 34px 30px;
   border-radius: var(--radius);
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 .hero h1 { margin: 0 0 10px; font-size: 1.8rem; }
 .hero p { margin: 0; color: #dce8e1; max-width: 600px; }
 
 .category-bar {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 28px;
+  margin-bottom: 26px;
 }
 .chip {
-  padding: 7px 16px;
-  border-radius: 20px;
+  padding: 6px 14px;
+  border-radius: 18px;
   background: #fff;
   border: 1px solid var(--border);
   font-size: 0.9rem;
@@ -135,12 +135,12 @@ img { max-width: 100%; display: block; }
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+  gap: 18px;
 }
 .product-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -159,8 +159,8 @@ img { max-width: 100%; display: block; }
 /* -------------------- Buttons -------------------- */
 .btn {
   display: inline-block;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 9px 17px;
+  border-radius: 7px;
   border: none;
   cursor: pointer;
   font-weight: 600;
@@ -177,19 +177,19 @@ img { max-width: 100%; display: block; }
 /* -------------------- Auth forms -------------------- */
 .auth-box {
   max-width: 420px;
-  margin: 20px auto;
+  margin: 28px auto;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 30px;
+  border-radius: 8px;
+  padding: 28px;
 }
 .auth-box h1 { margin-top: 0; font-size: 1.5rem; color: var(--primary-dark); }
 .auth-form { display: flex; flex-direction: column; gap: 14px; margin-bottom: 14px; }
 .auth-form label { font-size: 0.9rem; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
 .auth-form input {
   padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1px solid #d8d5cd;
+  border-radius: 5px;
   font-size: 0.95rem;
 }
 
@@ -197,11 +197,11 @@ img { max-width: 100%; display: block; }
 .product-detail {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 36px;
+  gap: 32px;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
+  border-radius: 8px;
+  padding: 26px;
   margin-bottom: 40px;
 }
 .product-detail-img img { width: 100%; border-radius: var(--radius); }
@@ -224,7 +224,7 @@ img { max-width: 100%; display: block; }
 .review-form-box {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 8px;
   padding: 20px;
   max-width: 500px;
   margin-bottom: 24px;
@@ -253,7 +253,7 @@ img { max-width: 100%; display: block; }
   gap: 14px;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 8px;
   padding: 12px;
 }
 .cart-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 6px; background: #f1efe8; }
@@ -266,7 +266,7 @@ img { max-width: 100%; display: block; }
 .cart-summary {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 8px;
   padding: 20px;
   position: sticky;
   top: 90px;
@@ -281,7 +281,7 @@ img { max-width: 100%; display: block; }
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 34px;
+  padding: 32px;
   text-align: center;
 }
 .result-box.success h1 { color: var(--success); }
@@ -303,10 +303,10 @@ img { max-width: 100%; display: block; }
 
 /* -------------------- Footer -------------------- */
 .site-footer {
-  background: var(--primary-dark);
+  background: #234536;
   color: #dce8e1;
   text-align: center;
-  padding: 24px 20px;
+  padding: 26px 20px;
   margin-top: 40px;
 }
 .footer-note { font-size: 0.85rem; color: #9fb3a7; }
@@ -322,8 +322,8 @@ img { max-width: 100%; display: block; }
 .checkout-subtitle { color: var(--muted); margin-top: -6px; margin-bottom: 20px; }
 .checkout-address-form textarea {
   padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1px solid #d8d5cd;
+  border-radius: 5px;
   font-family: inherit;
   font-size: 0.95rem;
   resize: vertical;
@@ -366,4 +366,50 @@ img { max-width: 100%; display: block; }
 .cancel-order-btn:hover {
   background: #c0392b;
   color: #fff;
+}
+
+/* Simple visual polish — keeps the original structure and functionality */
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(45, 106, 79, 0.10);
+}
+
+.btn-primary,
+.btn-small {
+  box-shadow: none;
+}
+
+.product-card,
+.auth-box,
+.product-detail,
+.review-form-box,
+.cart-item,
+.cart-summary,
+.checkout-box,
+.result-box,
+.order-card {
+  box-shadow: 0 1px 3px rgba(38, 48, 42, 0.04);
+}
+
+@media (max-width: 800px) {
+  .site-main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero {
+    padding: 28px 22px;
+  }
+
+  .header-inner {
+    gap: 12px;
+  }
 }

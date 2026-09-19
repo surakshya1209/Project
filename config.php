@@ -15,7 +15,10 @@ define('SITE_URL', 'http://localhost/stationary-shop');
    These are eSewa's official published test credentials for the
    rc-epay (sandbox) environment. Replace with your real merchant
    code + secret key when you go live with eSewa. */
-
+define('ESEWA_MERCHANT_CODE', 'EPAYTEST');
+define('ESEWA_SECRET_KEY', '8gBm/:&EnhH.1/q');
+define('ESEWA_FORM_URL', 'https://rc-epay.esewa.com.np/api/epay/main/v2/form');
+define('ESEWA_STATUS_CHECK_URL', 'https://rc.esewa.com.np/api/epay/transaction/status/');
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if ($conn->connect_error) {

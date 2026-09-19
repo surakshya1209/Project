@@ -44,6 +44,12 @@ require 'includes/header.php';
             <li><?= h($oi['name']) ?> × <?= $oi['quantity'] ?> — <?= money($oi['price'] * $oi['quantity']) ?></li>
           <?php endforeach; ?>
         </ul>
+        <?php if (!empty($o['delivery_address'])): ?>
+  <p class="delivery-info">
+    📍 Delivering to <strong><?= h($o['delivery_name']) ?></strong> (<?= h($o['delivery_phone']) ?>)<br>
+    <?= nl2br(h($o['delivery_address'])) ?>
+  </p>
+<?php endif; ?>
 
         <div class="order-total">Total: <?= money($o['total_amount']) ?></div>
       </div>

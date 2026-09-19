@@ -112,6 +112,10 @@ require 'includes/header.php';
   <?php if ($order): ?>
     <p>Order Reference: <strong><?= h($order['transaction_uuid']) ?></strong></p>
     <p>Amount: <strong><?= money($order['total_amount']) ?></strong></p>
+    <?php if (!empty($order['delivery_address'])): ?>
+  <p>Delivering to: <strong><?= h($order['delivery_name']) ?></strong> (<?= h($order['delivery_phone']) ?>)<br>
+  <?= nl2br(h($order['delivery_address'])) ?></p>
+<?php endif; ?>
   <?php endif; ?>
   <a href="<?= $success ? 'orders.php' : 'cart.php' ?>" class="btn btn-primary">
     <?= $success ? 'View My Orders' : 'Back to Cart' ?>

@@ -35,16 +35,75 @@ $deliveryCharge = 100.00;
 $taxAmount      = 0.00; // adjust if VAT applies
 $totalAmount    = $subtotal + $deliveryCharge + $taxAmount;
 
+$errors = [];
+
+// -------- STEP 1: show the delivery-address form (not submitted yet) --------
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+
+    $pageTitle = 'Checkout';
+    require 'includes/header.php';
+    ?>
+
+    <div class="checkout-box checkout-form-box">
+      <h1>Delivery Details</h1>
+      <p class="checkout-subtitle">Please enter where this order should be delivered before you proceed to payment.</p>
+
+      <?php foreach ($errors as $e): ?>
+        <div class="flash error"><?= h($e) ?></div>
+      <?php endforeach; ?>
+
+      <form method="post" action="checkout.php" class="auth-form checkout-address-form">
+        <label>Full Name
+          <input type="text" name="delivery_name" value="<?= h($_SESSION['user_name'] ?? '') ?>" required>
+        </label>
+        <label>Phone Number
+          <input type="tel" name="delivery_phone" placeholder="98XXXXXXXX" pattern="[0-9+ ]{7,15}" required>
+        </label>
+        <label>Delivery Location / Address
+          <textarea name="delivery_address" rows="3" placeholder="City, Municipality/Ward, Street, Landmark..." required></textarea>
+        </label>
+
+        <div class="checkout-summary-mini">
+          <div class="summary-row"><span>Subtotal</span><span><?= money($subtotal) ?></span></div>
+          <div class="summary-row"><span>Delivery Charge</span><span><?= money($deliveryCharge) ?></span></div>
+          <div class="summary-row total-row"><span>Total</span><span><?= money($totalAmount) ?></span></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Continue to Payment</button>
+      </form>
+    </div>
+
+    <?php
+    require 'includes/footer.php';
+    exit;
+}
+
+// -------- STEP 2: address form was submitted - validate it --------
+$deliveryName    = trim($_POST['delivery_name'] ?? '');
+$deliveryPhone   = trim($_POST['delivery_phone'] ?? '');
+$deliveryAddress = trim($_POST['delivery_address'] ?? '');
+
+if ($deliveryName === '' || $deliveryPhone === '' || $deliveryAddress === '') {
+    $_SESSION['flash'] = ['type' => 'error', 'message' => 'Please fill in your name, phone number and delivery address.'];
+    header('Location: checkout.php');
+    exit;
+}
+
 // Unique transaction id for this order
 $transactionUuid = date('Ymd-His') . '-' . $userId . '-' . bin2hex(random_bytes(3));
 
 $conn->begin_transaction();
 try {
     $orderStmt = $conn->prepare(
-        "INSERT INTO orders (user_id, transaction_uuid, total_amount, payment_method, status)
-         VALUES (?, ?, ?, 'esewa', 'pending')"
+        "INSERT INTO orders (user_id, transaction_uuid, total_amount, payment_method, status,
+                              delivery_name, delivery_phone, delivery_address)
+         VALUES (?, ?, ?, 'esewa', 'pending', ?, ?, ?)"
     );
-    $orderStmt->bind_param('isd', $userId, $transactionUuid, $totalAmount);
+    $orderStmt->bind_param(
+        'isdsss',
+        $userId, $transactionUuid, $totalAmount,
+        $deliveryName, $deliveryPhone, $deliveryAddress
+    );
     $orderStmt->execute();
     $orderId = $orderStmt->insert_id;
     $orderStmt->close();
@@ -82,6 +141,7 @@ require 'includes/header.php';
 
 <div class="checkout-box">
   <h1>Redirecting to eSewa...</h1>
+  <p>Delivering to: <strong><?= h($deliveryName) ?></strong>, <?= h($deliveryPhone) ?><br><?= nl2br(h($deliveryAddress)) ?></p>
   <p>Please wait, you are being redirected to eSewa to complete your payment of <strong><?= money($totalAmount) ?></strong>.</p>
   <p>If you are not redirected automatically, click the button below.</p>
 

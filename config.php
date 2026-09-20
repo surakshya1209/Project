@@ -9,7 +9,7 @@ define('DB_PASS', '');
 define('DB_NAME', 'stationary_shop');
 
 // Base URL of your site (no trailing slash) - used for eSewa redirect URLs
-define('SITE_URL', 'http://localhost/stationary-shop');
+define('SITE_URL', 'http://localhost/Project');
 
 /* -------- eSewa TEST/sandbox credentials --------
    These are eSewa's official published test credentials for the

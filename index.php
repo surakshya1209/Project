@@ -41,8 +41,9 @@ require 'includes/header.php';
 ?>
 
 <section class="hero">
+  <br>
   <h1>Everything <span class="highlight">You</span> Need for Learning, All in One Place</h1>
-  <p>From school supplies to novels and academic books — your trusted stationery store, now online.</p>
+  <p>From school supplies to novels and academic books — your trusted stationery store, now online.</p><br>
   <div class="hero-actions">
     <a href="index.php" class="btn btn-primary">Buy Now</a>
     <a href="#all-products" class="btn btn-outline">Browse Products</a>

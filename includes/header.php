@@ -10,7 +10,10 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="<?= isset($assetBase) ? $assetBase : '' ?>index.php" class="logo">📚 Pustak Bhawan</a>
+    <a href="<?= isset($assetBase) ? $assetBase : '' ?>index.php" class="logo">
+  <img src="<?= isset($assetBase) ? $assetBase : '' ?>uploads/logo.png" alt="Pustak Bhawan Logo" class="logo-img">
+  Pustak Bhawan
+</a>
 
     <form class="search-form" action="<?= isset($assetBase) ? $assetBase : '' ?>index.php" method="get">
       <input type="text" name="q" placeholder="Search for pens, notebooks..." value="<?= h($_GET['q'] ?? '') ?>">

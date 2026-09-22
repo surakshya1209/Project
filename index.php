@@ -41,9 +41,15 @@ require 'includes/header.php';
 ?>
 
 <section class="hero">
-  <h1>Everything for your desk, in one place.</h1>
-  <p>Pens, notebooks, art supplies and office essentials — top-rated and recommended by our customers.</p>
+  <h1>Everything <span class="highlight">You</span> Need for Learning, All in One Place</h1>
+  <p>From school supplies to novels and academic books — your trusted stationery store, now online.</p>
+  <div class="hero-actions">
+    <a href="index.php" class="btn btn-primary">Buy Now</a>
+    <a href="#all-products" class="btn btn-outline">Browse Products</a>
+  </div>
 </section>
+
+<p class="divider-caption">Trusted by students, teachers &amp; families for generations</p><br>
 
 <section class="category-bar">
   <a href="index.php" class="chip <?= $categoryId === 0 ? 'active' : '' ?>">All</a>
@@ -56,7 +62,7 @@ require 'includes/header.php';
 
 <?php if ($search === '' && $categoryId === 0 && !empty($recommended)): ?>
 <section class="product-section">
-  <h2>⭐ Recommended For You</h2>
+  <h2>Recommended <span class="highlight">For You</span></h2>
   <div class="product-grid">
     <?php foreach ($recommended as $p): ?>
       <?php include 'includes/product_card.php'; ?>
@@ -65,7 +71,7 @@ require 'includes/header.php';
 </section>
 <?php endif; ?>
 
-<section class="product-section">
+<section class="product-section" id="all-products">
   <h2>
     <?php if ($search !== ''): ?>
       Search results for "<?= h($search) ?>"

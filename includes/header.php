@@ -22,8 +22,7 @@
 
     <nav class="main-nav">
       <a href="<?= isset($assetBase) ? $assetBase : '' ?>index.php">Home</a>
-      <a href="<?= isset($assetBase) ? $assetBase : '' ?>cart.php" class="cart-link">
-        🛒 Cart
+      <a href="<?= isset($assetBase) ? $assetBase : '' ?>cart.php" class="cart-link">Cart
         <?php $cc = getCartCount($conn); if ($cc > 0): ?>
           <span class="cart-badge"><?= $cc ?></span>
         <?php endif; ?>

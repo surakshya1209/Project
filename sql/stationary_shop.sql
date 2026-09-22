@@ -1,3 +1,8 @@
+-- ============================================================
+--  Stationary Shop - Database Schema + Sample Data
+--  Import this file in phpMyAdmin / MySQL before running the site
+-- ============================================================
+
 CREATE DATABASE IF NOT EXISTS stationary_shop CHARACTER SET utf8mb4;
 USE stationary_shop;
 
@@ -106,3 +111,6 @@ INSERT INTO products (category_id, name, description, price, stock, image) VALUE
 (5, 'School Backpack', 'Water-resistant backpack with laptop compartment.', 1800.00, 15, 'backpack.jpg'),
 (5, 'Pencil Case', 'Durable zip pencil case with multiple compartments.', 220.00, 55, 'pencil-case.jpg');
 
+-- To create an admin account: register normally through register.php,
+-- then run this (replace the email) to promote that account to admin:
+-- UPDATE users SET is_admin = 1 WHERE email = 'you@example.com';

@@ -33,6 +33,7 @@ img { max-width: 100%; display: block; }
   font-family: 'Fraunces', Georgia, serif;
 }
 
+/* -------------------- Header -------------------- */
 .site-header {
   background: var(--primary-dark);
   color: #fff;

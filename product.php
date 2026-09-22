@@ -55,7 +55,7 @@ require 'includes/header.php';
 <div class="product-detail">
   <div class="product-detail-img">
     <img src="uploads/<?= h($product['image']) ?>" alt="<?= h($product['name']) ?>"
-         onerror="this.src='https://via.placeholder.com/450x400?text=StationHub'">
+         onerror="this.src='https://via.placeholder.com/450x400?text=PustakBhawan'">
   </div>
 
   <div class="product-detail-info">

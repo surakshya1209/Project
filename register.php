@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id']   = $stmt->insert_id;
             $_SESSION['user_name'] = $name;
             $_SESSION['is_admin']  = 0;
-            $_SESSION['flash'] = ['type' => 'success', 'message' => 'Welcome to StationHub, ' . $name . '!'];
+            $_SESSION['flash'] = ['type' => 'success', 'message' => 'Welcome to PustakBhawan, ' . $name . '!'];
             header('Location: index.php');
             exit;
         } else {
